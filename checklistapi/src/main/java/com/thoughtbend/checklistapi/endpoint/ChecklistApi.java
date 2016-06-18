@@ -8,6 +8,9 @@ import java.util.Map;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
+
+import org.json.JSONArray;
 
 import com.thoughtbend.checklistapi.resource.ChecklistResource;
 
@@ -18,7 +21,7 @@ public class ChecklistApi {
 	
 	@GET
 	@Produces("application/json")
-	public List<ChecklistResource> query() {
+	public Response query() {
 		
 		if (CHECKLIST_STORE.isEmpty()) {
 			
@@ -29,6 +32,8 @@ public class ChecklistApi {
 			CHECKLIST_STORE.put(checklist.getId(), checklist);
 		}
 		
-		return new ArrayList<>(CHECKLIST_STORE.values());
+		JSONArray resultArray = new JSONArray(CHECKLIST_STORE.values());
+		
+		return Response.status(200).entity(resultArray.toString()).build();
 	}
 }
