@@ -34,6 +34,6 @@ public class ChecklistApi {
 		
 		JSONArray resultArray = new JSONArray(CHECKLIST_STORE.values());
 		
-		return Response.status(200).entity(resultArray.toString()).build();
+		return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(resultArray.toString()).build();
 	}
 }

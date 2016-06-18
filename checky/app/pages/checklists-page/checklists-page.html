@@ -1,0 +1,22 @@
+<!--
+  Generated template for the ChecklistsPagePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-navbar *navbar>
+    <ion-title>Checklists</ion-title>
+    <ion-buttons  (click)="navigateToCreateNewChecklistClick()" end>
+        <button>
+            <ion-icon name="heart"></ion-icon>
+        </button>
+    </ion-buttons>
+</ion-navbar>
+
+<ion-content padding class="checklists-page">
+    <ion-list>
+        <ion-item *ngFor="let checklist of checklists" (click)="checklistClicked(checklist)">
+            {{checklist.name}}
+        </ion-item>
+    </ion-list>
+</ion-content>
